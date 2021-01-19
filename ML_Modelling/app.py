@@ -3,6 +3,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+# from tensorflow.keras.models import load_model
 
 html_temp = """
 <div style="background-color:tomato;padding:10px">
@@ -68,8 +69,11 @@ all_columns=pd.read_csv("final_scout_20201204.csv").drop('price',axis=1).columns
 df = pd.get_dummies(df_table).reindex(columns=all_columns, fill_value=0)
 
 st.subheader("Choose ML Model:")
-model = st.radio('',['XGBoost Regressor', 'Random Forest Regressor'])
+model = st.radio('',['XGBoost Regressor', 
+#                      'Artificial Neural Networks',
+                     'Random Forest Regressor'])
 # Button
+# dl_model = load_model('DL_Model.h5')
 xgb_model = pickle.load(open("XGBoostReg.pkl","rb"))
 rfr_model = pickle.load(open("RFReg.pkl","rb"))
 
@@ -85,5 +89,7 @@ if st.button("Submit"):
             prediction= rfr_model.predict(df)
         elif model=='XGBoost Regressor':
             prediction= xgb_model.predict(df)
+#         else:
+#             prediction= dl_model.predict(df)[0]
 
     st.success(f"The Estimated Price of Your Car is €{int(prediction[0])}")
