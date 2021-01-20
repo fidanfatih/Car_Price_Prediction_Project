@@ -1,1 +1,3 @@
 # Car_Price_Prediction_Project
+
+Car Price Prediction is a popular machine learning problem. There are many factors that influence the price of a car in the second-hand market. The end goal of the project is to predict a car's price given its features to maximize profits. In this context, I got a large data set from AutoScout24, a popular second hand car sales site, with some web scraping methods. At the end of the EDA processes, actionable and relevant information that helps businesses make informed decisions was extracted. A machine learning model trained with this clean data was created and made available to the customer via a web interface.
